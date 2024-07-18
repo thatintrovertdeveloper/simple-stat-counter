@@ -1,6 +1,6 @@
 {
   "name": "simple-stat-counter",
-  "version": "1.0.4",
+  "version": "1.0.0",
   "description": "A simple library for animating statistic counters.",
   "main": "index.js",
   "module": "dist/index.js",
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/thatintrovertdeveloper/simple-stat-counter.git"
+    "url": "git+https://github.com/thatintrovertdeveloper/simple-stat-counter.git"
   },
   "bugs": {
     "url": "https://github.com/thatintrovertdeveloper/simple-stat-counter/issues"
