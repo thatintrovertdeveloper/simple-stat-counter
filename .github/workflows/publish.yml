@@ -22,14 +22,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 20
-          registry-url: https://npm.pkg.github.com/
+          registry-url: "https://npm.pkg.github.com/"
           scope: "@thatintrovertdeveloper"
+          cache: "npm"
       - name: Install dependencies
         run: npm ci
       - name: Publish to GitHub Packages
-        run: npm publish
+        run: npm publish --registry=https://npm.pkg.github.com/
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
