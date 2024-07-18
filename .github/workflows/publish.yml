@@ -15,26 +15,25 @@ on:
           - warning
           - debug
 
-permissions:
-  contents: write # for checkout and tag
-  packages: write # for publish
-
 jobs:
   publish:
     runs-on: self-hosted
+    permissions:
+      contents: read
+      packages: write
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: "20.x"
           registry-url: "https://npm.pkg.github.com/"
           scope: "@thatintrovertdeveloper"
           cache: "npm"
       - name: Install dependencies
         run: npm ci
       - name: Publish to GitHub Packages
-        run: npm publish --registry=https://npm.pkg.github.com/
+        run: npm publish --registry=https://npm.pkg.github.com/ --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
