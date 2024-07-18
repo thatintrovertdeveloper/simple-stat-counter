@@ -1,5 +1,5 @@
 {
-  "name": "simple-stat-counter",
+  "name": "@introvertdeveloper/simple-stat-counter",
   "version": "1.0.0",
   "description": "A simple library for animating statistic counters.",
   "main": "index.js",
