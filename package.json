@@ -1,6 +1,6 @@
 {
   "name": "simple-stat-counter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple library for animating statistic counters.",
   "main": "index.js",
   "module": "dist/index.js",
