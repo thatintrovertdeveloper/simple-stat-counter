@@ -15,12 +15,13 @@ on:
           - warning
           - debug
 
+permissions:
+  contents: write # for checkout and tag
+  packages: write # for publish
+
 jobs:
   publish:
     runs-on: self-hosted
-    permissions:
-      contents: read
-      packages: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
