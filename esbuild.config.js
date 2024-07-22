@@ -1,21 +1,37 @@
 const esbuild = require("esbuild");
 
-const buildOptions = {
+const defaultOptions = {
   entryPoints: ["src/simple-stat-counter.js"],
   bundle: true,
   minify: true,
-  format: "esm", // Output as ES module
+};
+
+const buildOptions = {
+  ...defaultOptions,
+  format: "esm",
   outfile: "dist/index.js",
 };
 
 const buildBrowserOptions = {
-  entryPoints: ["src/simple-stat-counter.js"],
-  bundle: true,
-  minify: true,
-  format: "iife", // Output as immediately-invoked function expression (for browser)
-  globalName: "SimpleStatCounter", // Expose as global variable in browser
+  ...defaultOptions,
+  format: "iife",
+  globalName: "SimpleStatCounter",
   outfile: "dist/simple-stat-counter.min.js",
 };
 
-esbuild.build(buildOptions).catch(() => process.exit(1));
-esbuild.build(buildBrowserOptions).catch(() => process.exit(1));
+async function build(options) {
+  try {
+    await esbuild.build(options);
+    console.log(`Built ${options.outfile}`);
+  } catch (error) {
+    console.error(`Error building ${options.outfile}:`, error);
+    process.exit(1);
+  }
+}
+
+async function main() {
+  await build(buildOptions);
+  await build(buildBrowserOptions);
+}
+
+main();
