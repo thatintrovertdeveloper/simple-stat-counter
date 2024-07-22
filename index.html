@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SimpleStatCounter Demo</title>
+    <style>
+      /* Example styles for counting elements */
+      .counting {
+        font-size: 24px;
+        font-weight: bold;
+        margin: 20px 0;
+        text-align: center;
+        opacity: 0; /* Initially hide elements */
+        transition: opacity 0.5s ease; /* Fade in effect */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>SimpleStatCounter Demo</h1>
+
+    <!-- Example counting elements -->
+    <div class="container">
+      <div class="counting" data-count="100">0</div>
+      <div class="counting" data-count="250">0</div>
+      <div class="counting" data-count="500">0</div>
+    </div>
+
+    <!-- Include SimpleStatCounter script -->
+    <script src="dist/simple-stat-counter.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize SimpleStatCounter
+        const counter = new SimpleStatCounter({
+          selector: ".counting",
+          root: null,
+          rootMargin: "0px",
+          threshold: 0.2,
+          interval: 30,
+          incrementDivisor: 50,
+          container: ".container", // Optional container to observe
+        });
+      });
+    </script>
+  </body>
+</html>
