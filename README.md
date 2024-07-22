@@ -1,69 +1,72 @@
-# Simple Stat Counter
+# SimpleStatCounter
 
-A simple library for animating counting elements when their parent element is in view.
+SimpleStatCounter is a JavaScript class that provides a way to animate numeric counting for elements when they become visible in the viewport. It uses the Intersection Observer API to trigger the counting animation when elements scroll into view.
+
+## Features
+
+- **Counting Animation:** Smoothly animates numeric counting for elements.
+- **Intersection Observer:** Observes elements to start counting when they enter the viewport.
+- **Customizable Options:** Allows customization of selector, root, threshold, interval, increment divisor, and container.
 
 ## Installation
 
-To install the library using npm, run the following command:
+No installation is necessary to use SimpleStatCounter directly in your HTML files. Simply include the script in your project:
 
+```html
+<script src="simple-stat-counter.js"></script>
 ```
-npm install simple-stat-counter
-```
-
-To use the library as a script, include the following `<script>` tag in your HTML file:
-
-```
-<script src="path/to/simple-stat-counter.js"></script>
-```
-
-Replace path/to/simple-stat-counter.js with the actual path to the library file.
 
 ## Usage
 
-To use the library as an ES module, import it in another script like this:
+1. **HTML Structure:**
 
-```
-import SimpleStatCounter from 'simple-stat-counter';
+   Ensure your HTML elements are structured appropriately for counting:
 
-const counter = new SimpleStatCounter({
-  selector: '.my-counter',
-  interval: 20,
-  incrementDivisor: 100
-});
-```
+   ```html
+   <div class="counting" data-count="100">0</div>
+   ```
 
-To use the library as a script, create a new instance of the `SimpleStatCounter` constructor function like this:
+   - `.counting`: The class used to identify elements for counting.
+   - `data-count`: Attribute specifying the final count value.
 
-```
-const counter = new SimpleStatCounter({
-  selector: '.my-counter',
-  interval: 20,
-  incrementDivisor: 100
-});
-```
+2. **Initialization:**
 
-The `SimpleStatCounter` constructor function accepts an options object as an argument. The options object can contain the following properties:
+   Initialize SimpleStatCounter with optional configuration:
 
-- `selector`: the CSS selector for the elements to animate. The default value is `'.counting'`.
+   ```javascript
+   // Example initialization
+   const counter = new SimpleStatCounter({
+     selector: ".counting", // Selector for counting elements
+     root: null, // Viewport root (null for viewport)
+     rootMargin: "0px", // Margin around the root
+     threshold: 0.2, // Intersection threshold
+     interval: 30, // Interval for counting animation (ms)
+     incrementDivisor: 50, // Divisor for increment calculation
+     container: null, // Optional container element selector
+   });
+   ```
 
-- `root`: the element that is used as the viewport for the IntersectionObserver. The default value is null, which means the viewport.
+3. **Customization:**
 
-- `rootMargin`: the margin around the root element. The default value is `'0px'`.
+   Adjust the options to fit your specific needs:
 
-- `threshold`: the threshold at which the IntersectionObserver callback is called. The default value is `0.2`.
+   - `selector`: CSS selector for elements to observe and count.
+   - `root`: Root element for the intersection observer (default: `null` for viewport).
+   - `rootMargin`: Margin around the root for intersection observer.
+   - `threshold`: Intersection threshold for triggering the callback.
+   - `interval`: Interval in milliseconds for the counting animation.
+   - `incrementDivisor`: Divisor for calculating increment values.
+   - `container`: Optional container element selector to observe instead of individual elements.
 
-- `interval`: the interval (in milliseconds) for the animation. The default value is `30`.
+4. **Notes:**
 
-- `incrementDivisor`: the divisor used to calculate the increment value for the animation. The default value is `50`.
+   - Ensure elements with the `.counting` class have a `data-count` attribute specifying the final count value.
+   - The counting animation starts when an element with `.counting` enters the viewport.
+
+## Example
+
+See `index.html` for a basic example demonstrating SimpleStatCounter in action.
 
 ## License
 
-The SimpleStatCounter library is licensed under the MIT License. See the LICENSE file for more information.
-
-## Contributing
-
-Contributions are welcome! If you find a bug or have a feature request, please open an issue on the GitHub repository. If you would like to contribute code, please fork the repository and submit a pull request.
-
-## Credits
-
-- This script is based on Veremey's code on [CodePen](https://codepen.io/veremey/pen/oNgbpKP).
+This project is licensed under the MIT License - see the LICENSE file for details.
