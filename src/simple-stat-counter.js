@@ -1,27 +1,35 @@
 (function (global) {
   class SimpleStatCounter {
     constructor(options = {}) {
-      this.options = {
+      const defaultOptions = {
         selector: ".counting",
         root: null,
         rootMargin: "0px",
         threshold: 0.2,
         interval: 30,
         incrementDivisor: 50,
-        ...options,
+        container: null,
       };
-      this.init();
-    }
-
-    init() {
+      this.options = { ...defaultOptions, ...options };
       this.elements = document.querySelectorAll(this.options.selector);
       this.observer = new IntersectionObserver(
         this.callback.bind(this),
         this.options
       );
-      this.elements.forEach((element) => {
-        this.observer.observe(element.parentElement);
-      });
+      this.observeElements();
+    }
+
+    observeElements() {
+      if (this.options.container) {
+        this.container = document.querySelector(this.options.container);
+        if (this.container) {
+          this.observer.observe(this.container);
+        }
+      } else {
+        this.elements.forEach((element) => {
+          this.observer.observe(element.parentElement);
+        });
+      }
     }
 
     callback(entries) {
