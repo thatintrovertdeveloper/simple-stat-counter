@@ -9,9 +9,15 @@
       :root {
         --columns: 3;
       }
-      .container {
-        margin-top: 100vh;
+      .hero-section {
+        min-height: 100vh;
         display: grid;
+        align-items: center;
+        justify-content: center;
+      }
+      .container {
+        display: grid;
+        min-height: 100vh;
         grid-template-columns: repeat(var(--columns, 1), 1fr);
       }
       .counting {
@@ -25,8 +31,9 @@
     </style>
   </head>
   <body>
-    <h1>SimpleStatCounter Demo</h1>
-
+    <div class="hero-section">
+      <h1>SimpleStatCounter Demo</h1>
+    </div>
     <!-- Example counting elements -->
     <div class="container">
       <div class="counting" data-count="100">0</div>
@@ -47,7 +54,6 @@
           threshold: 0.2,
           interval: 30,
           incrementDivisor: 50,
-          container: ".container",
         });
       });
     </script>
