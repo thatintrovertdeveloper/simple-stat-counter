@@ -14,9 +14,10 @@ const buildOptions = {
 
 const buildBrowserOptions = {
   ...defaultOptions,
-  format: "iife",
   globalName: "SimpleStatCounter",
   outfile: "dist/simple-stat-counter.min.js",
+  platform: "browser",
+  bundle: false,
 };
 
 async function build(options) {
