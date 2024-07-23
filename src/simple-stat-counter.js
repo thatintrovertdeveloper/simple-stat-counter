@@ -35,10 +35,10 @@
     callback(entries) {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          const countingElement = entry.target.querySelector(
-            this.options.selector
-          );
-          this.startCountAnimation(countingElement);
+          const countingElements = entry.target.querySelectorAll(".counting");
+          countingElements.forEach((countingElement) => {
+            this.startCountAnimation(countingElement);
+          });
           this.observer.unobserve(entry.target);
         }
       });
