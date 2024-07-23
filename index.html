@@ -6,6 +6,14 @@
     <title>SimpleStatCounter Demo</title>
     <style>
       /* Example styles for counting elements */
+      :root {
+        --columns: 3;
+      }
+      .container {
+        margin-top: 100vh;
+        display: grid;
+        grid-template-columns: repeat(var(--columns, 1), 1fr);
+      }
       .counting {
         font-size: 24px;
         font-weight: bold;
@@ -39,7 +47,7 @@
           threshold: 0.2,
           interval: 30,
           incrementDivisor: 50,
-          container: ".container", // Optional container to observe
+          container: ".container",
         });
       });
     </script>
