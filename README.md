@@ -78,7 +78,7 @@ Replace `path/to/simple-stat-counter.js` with the actual path to the library fil
 
 ## Example
 
-Refer to `index.html` for a basic example demonstrating SimpleStatCounter in action.
+Refer to `index.html` for a basic example demonstrating SimpleStatCounter in action or check out the [CodePen demo](https://codepen.io/thatIntrovertDeveloper/pen/RwzWXyx).
 
 ## License
 
