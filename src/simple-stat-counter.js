@@ -45,15 +45,18 @@
     }
 
     startCountAnimation(element) {
-      const countTo = parseInt(element.getAttribute("data-count"), 10);
+      const countTo = parseInt(
+        element.getAttribute("data-count").replace(/,/g, ""),
+        10
+      );
       let startCount = 0;
       const increment = Math.ceil(countTo / this.options.incrementDivisor);
 
       const animationInterval = setInterval(() => {
         startCount += increment;
-        element.innerText = startCount;
+        element.innerText = startCount.toLocaleString();
         if (startCount >= countTo) {
-          element.innerText = countTo;
+          element.innerText = countTo.toLocaleString();
           clearInterval(animationInterval);
         }
       }, this.options.interval);
