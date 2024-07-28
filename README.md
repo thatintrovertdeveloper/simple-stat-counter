@@ -1,6 +1,6 @@
-# SimpleStatCounter
+# Simple Stat Counter
 
-SimpleStatCounter is a JavaScript class that enables smooth numeric counting animations for elements when they enter the viewport. It utilizes the Intersection Observer API to trigger these animations.
+Simple Stat Counter is a JavaScript class that enables smooth numeric counting animations for elements when they enter the viewport. It utilizes the Intersection Observer API to trigger these animations.
 
 ## Features
 
