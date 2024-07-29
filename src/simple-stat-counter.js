@@ -51,17 +51,17 @@
       );
       let startCount = 0;
       const increment = Math.ceil(countTo / this.options.incrementDivisor);
-
-      const animationInterval = setInterval(() => {
-        startCount += increment;
-        element.innerText = startCount.toLocaleString();
-        if (startCount >= countTo) {
-          element.innerText = countTo.toLocaleString();
-          clearInterval(animationInterval);
-        }
-      }, this.options.interval);
-
       element.style.opacity = 1;
+
+      const updateCount = () => {
+        startCount = Math.min(startCount + increment, countTo);
+        element.innerText = startCount.toLocaleString();
+        if (startCount < countTo) {
+          requestAnimationFrame(updateCount);
+        }
+      };
+
+      requestAnimationFrame(updateCount);
     }
   }
 
